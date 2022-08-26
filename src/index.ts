@@ -21,7 +21,7 @@ app.get("/games/:appIDs", async (req, res) => {
 });
 
 app.post("/games", async (req, res) => {
-  //console.log(req.body);
+  console.log(req.body);
   const game = req.body;
   const query = "INSERT INTO games (appID, name, isMultiplayer, isOnlineMultiplayer, isLocalMultiplayer, isSupportGamepad, isVirtualReality) VALUES(" +
   game.appID + ',\'' + game.name + '\',\'' + game.isMultiplayer + '\',\'' + game.isOnlineMultiplayer + '\',\'' + game.isLocalMultiplayer + '\',\'' + game.isSupportGamepad + '\',\'' + game.isVirtualReality + "\');"
@@ -64,7 +64,7 @@ curl -H "Content-Type: application/json" \
 
 curl -H "Content-Type: application/json" \
   --request POST \
-  -d '{"appID":"421","name":"Weed2","isMultiplayer":"false","isOnlineMultiplayer":"true","isLocalMultiplayer":"false","isSupportGamepad":"true","isVirtualReality":"true"}' \
+  -d '{"appID":426,"name":"Weed2","isMultiplayer":"false","isOnlineMultiplayer":"true","isLocalMultiplayer":"false","isSupportGamepad":"true","isVirtualReality":"true"}' \
   http://localhost:3333/games/
 
 curl 'http://localhost:3333/games/(421,422,5)'
