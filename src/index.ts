@@ -19,8 +19,7 @@ app.get("/games/:appIDs", async (req, res) => {
   //console.log(req.params.appIDs);
   const { rows } = await pool.query("SELECT * FROM GAMES WHERE APPID IN "+ req.params.appIDs);
   console.log("data gathered!")
-  console.log(rows);
-  res.send(`${rows}`);
+  res.send(`${JSON.stringify(rows)}`);
 });
 
 //takes an object of the form {games: [gameJson,gameJson,gameJson...]}
