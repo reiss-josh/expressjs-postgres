@@ -16,8 +16,9 @@ app.use(bodyParser.text({ type: "text/html" }));
 app.use(cors({origin:true,credentials: true}));
 
 app.get("/games/:appIDs", async (req, res) => {
-  console.log(req.params.appIDs);
+  //console.log(req.params.appIDs);
   const { rows } = await pool.query("SELECT * FROM GAMES WHERE APPID IN "+ req.params.appIDs);
+  console.log("data gathered!")
   console.log(rows);
   res.send(`${rows}`);
 });
@@ -41,7 +42,7 @@ app.post("/games", async (req, res) => {
   //console.log(query);
   try{
     await pool.query(query);
-    res.send('Added new game to DB successfully');
+    res.send('Added new game(s) to DB successfully');
   } catch (error) {
     console.log(error);
     res.send("An error occured.");
@@ -84,6 +85,4 @@ curl -H "Content-Type: application/json" \
   http://localhost:3333/games/
 
 curl 'http://localhost:3333/games/(421,422,5)'
-
-curl 'https://sci-karate-cors.herokuapp.com/https://gamesincommondb.up.railway.app/games/(4000,620,250320,417860,34270,205230,205950)/'
 */
