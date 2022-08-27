@@ -44,6 +44,7 @@ app.post("/games", async (req, res) => {
     res.send('Added new game(s) to DB successfully');
   } catch (error) {
     console.log(error);
+    console.log(req.body);
     res.send("An error occured.");
   }
 });
